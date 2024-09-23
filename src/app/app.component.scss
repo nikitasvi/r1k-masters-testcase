@@ -1,0 +1,14 @@
+@import "./styles/variables";
+
+:host {
+	display: block;
+	background-color: $background-color;
+}
+
+.container {
+	margin: 44px;
+
+	@media #{$mobile} {
+		margin: 0;
+	}
+}

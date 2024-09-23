@@ -1,0 +1,186 @@
+@import "../../../styles/variables";
+
+.navigation {
+	.back {
+		display: flex;
+		align-items: center;
+		color: #666F78;
+		
+		span {
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 24px;
+		}
+
+		@media #{$mobile} {
+			margin: 32px 16px 0 16px;
+		}
+	}
+}
+
+.title {
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 36px;
+	margin: 32px 0 24px 0;
+
+	@media #{$mobile} {
+		margin: 32px 16px 24px 16px;
+	}
+}
+
+.toolbar {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	column-gap: 100px;
+	row-gap: 24px;
+
+	@media #{$mobile} {
+		row-gap: 8px;
+	}
+
+	margin-bottom: 24px;
+
+	.actions {
+		display: flex;
+		column-gap: 24px;
+		flex-wrap: wrap;
+		row-gap: 8px;
+
+		button {
+		flex-direction: row-reverse;
+		}
+	}
+
+	@media #{$mobile} {
+		.actions, .filters {
+			margin: 0 16px;
+		}
+	}
+
+	button {
+		display: flex;
+		align-items: center;
+		column-gap: 8px;
+	}
+
+	mat-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		margin: 0;
+	}
+
+	.mat-mdc-button.mat-mdc-button:not(:disabled).active-filter {
+		background-color: #C4C7C9;
+		color: #666F78;
+	}
+}
+
+.filter {
+	display: flex;
+	flex-direction: column;
+	background-color: #FFFFFF;
+	border-radius: 8px;
+	padding-top: 32px;
+	padding-bottom: 32px;
+	padding-left: 40px;
+
+	@media #{$tablet} {
+		padding: 16px 24px;
+	}
+
+	@media #{$mobile} {
+		padding: 8px 14px;
+	}
+
+	box-shadow: none;
+
+	.form {
+		padding: 32px 5% 32px 24px;
+
+		@media #{$tablet} {
+		padding: 16px;
+		}
+
+		@media #{$mobile} {
+		padding: 0;
+		}  
+	}
+
+	.mat-mdc-card-header.filter-title {
+		padding: 0;
+
+		p {
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 24px;
+		}  
+	}
+
+	&-inputs {
+		display: flex;
+		gap: 24px;
+		flex-wrap: wrap;
+	}
+
+	.actions {
+		display: flex;
+		column-gap: 25px;
+		row-gap: 16px;
+		flex-wrap: wrap;
+
+		button {
+			width: 169px;
+
+			@media #{$tablet} {
+				width: 153px;
+			}
+		}
+
+		@media #{$mobile} {
+			justify-content: center;
+		}
+	}
+
+	&-form-input {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		width: 265px;
+
+		.label {
+			font-size: 16px;
+			font-weight: 700;
+			line-height: 20px;
+		}
+
+		.mat-mdc-text-field-wrapper {
+			height: 44px;
+			border-radius: 8px;
+			border: 1px solid #828C9666;
+			box-shadow: none;
+
+			.mat-mdc-form-field-flex {
+				.mat-mdc-form-field-infix {
+					min-height: 44px !important;
+					padding: 12px 0 14px 0;
+
+					input {
+						font-size: 16px;
+						font-weight: 300;
+						line-height: 18px;
+						caret-color: #000000;
+					}
+				}
+
+				.mdc-notched-outline > * {
+					border: none !important;
+				}
+			}
+		}
+	}
+}

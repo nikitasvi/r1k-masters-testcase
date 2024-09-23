@@ -1,0 +1,68 @@
+@import "../../../styles/variables";
+
+:host {
+	display: block;
+	height: 70px;
+	background-color: $primary-color;
+}
+
+.header-container {
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.profile {
+	$name-color: #FFFFFF;
+	$role-color: #E5E5E5;
+
+	display: flex;
+	align-items: center;
+	column-gap: 7px;
+
+	margin-right: 40px;
+
+	.avatar {
+		height: 32px;
+		width: 32px;
+	
+		background-color: #C4C4C4;
+		border-radius: 50%;
+	}
+
+	.info {
+		display: flex;
+		flex-direction: column;
+		
+		font-weight: 700;
+
+		.name {
+			color: $name-color;
+		}
+
+		.role {
+			color: $role-color;
+		}
+	}
+}
+
+.burger-menu {
+	display: none;
+}
+
+@media #{$laptop} {
+	:host {
+		height: 55px;
+	}
+
+	.profile {
+		display: none;
+	}
+
+	.burger-menu {
+		display: block;
+		margin-right: 40px;
+		cursor: pointer;
+	}
+}

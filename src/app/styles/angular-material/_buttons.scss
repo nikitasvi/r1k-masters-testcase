@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+.mat-mdc-button.mat-mdc-button:not(:disabled) {
+	height: 40px;
+	padding: 8px 16px;
+	border-radius: 8px;
+	background-color: mat.m2-get-color-from-palette($custom-palette, 700);
+	color: $light-primary-text;
+	//color: mat.m2-get-color-from-palette($custom-palette, 700); // Текст #DA2032
+	border-color: mat.m2-get-color-from-palette($custom-palette, 700); // Обводка #DA2032
+
+	&.large {
+		height: 48px;
+	}
+}
+
+.mat-mdc-button-touch-target {
+	height: 40px;
+
+	&.large {
+		height: 48px;
+	}
+}
+  
+.mat-mdc-button.mat-mdc-button:not(:disabled):hover,
+.mat-mdc-button.mat-mdc-button:not(:disabled):focus,
+.mat-mdc-button.mat-mdc-button:not(:disabled):active {
+	//border-color: mat.m2-get-color-from-palette($custom-palette, 900); // Более темный цвет при наведении
+	//color: mat.m2-get-color-from-palette($custom-palette, 900); // Текст темнее при наведении
+}
