@@ -8,11 +8,31 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions, MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS, NativeDateAdapter } from '@angular/material/core';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { getPaginatorConfigurationIntl } from '../utils/paginator-configuration';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const appearance: MatFormFieldDefaultOptions = {
 	appearance: 'outline'
 };
+
+export const CUSTOM_DATE_FORMATS: MatDateFormats = {
+	parse: {
+		dateInput: 'DD.MM.YYYY',
+	},
+	display: {
+		dateInput: 'DD.MM.YYYY',
+		monthYearLabel: 'MMMM YYYY',
+		dateA11yLabel: 'LL',
+		monthYearA11yLabel: 'MMMM YYYY',
+	}
+};
+
+//registerLocaleData(localeRu);
 
 @NgModule({
 	imports: [
@@ -24,7 +44,13 @@ const appearance: MatFormFieldDefaultOptions = {
 		MatDividerModule,
 		MatFormFieldModule,
 		MatInputModule,
-		MatDatepickerModule
+		MatDatepickerModule,
+		MatNativeDateModule,
+		MatSelectModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatCheckboxModule,
+		MatSidenavModule
 	],
 	providers: [
 		{
@@ -32,12 +58,16 @@ const appearance: MatFormFieldDefaultOptions = {
       		useValue: appearance
 		},
 		{
-			provide: DateAdapter, 
-			useClass: NativeDateAdapter
+			provide: MAT_DATE_FORMATS, 
+			useValue: CUSTOM_DATE_FORMATS
 		},
 		{
-			provide: MAT_DATE_FORMATS, 
-			useValue: MAT_NATIVE_DATE_FORMATS
+			provide: MAT_DATE_LOCALE, 
+			useValue: 'ru-RU'
+		},
+		{
+			provide: MatPaginatorIntl, 
+			useValue: getPaginatorConfigurationIntl()
 		}
 	],
 	exports: [
@@ -49,7 +79,13 @@ const appearance: MatFormFieldDefaultOptions = {
 		MatDividerModule,
 		MatFormFieldModule,
 		MatInputModule,
-		MatDatepickerModule
+		MatDatepickerModule,
+		MatNativeDateModule,
+		MatSelectModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatCheckboxModule,
+		MatSidenavModule
 	]
 })
 export class MaterialModule {}

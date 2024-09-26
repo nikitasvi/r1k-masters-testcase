@@ -5,6 +5,9 @@ import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from "./shared/shared.module";
 import { ManagementModule } from "./features/management/management.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { WindowSizeService } from "./shared/services/widow-sizes.service";
+import { MaterialModule } from "./shared/modules/angular-material.module";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
 	imports: [
@@ -12,7 +15,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 		BrowserAnimationsModule,
 		AppRoutingModule,
 		SharedModule,
-		ManagementModule
+		ManagementModule,
+		MaterialModule,
+		RouterModule
+	],
+	providers: [
+		WindowSizeService
 	],
 	declarations: [
 		AppComponent

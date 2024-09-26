@@ -2,15 +2,22 @@
 
 @import "../src/app/styles/angular-material/cards";
 @import "../src/app/styles/angular-material/buttons";
+@import "../src/app/styles/angular-material/form-field";
+@import "../src/app/styles/angular-material/table";
+@import "../src/app/styles/angular-material/paginator";
 
 @import "../src/app/styles/_fonts";
 
 * {
-  font-size: 14px;
-  font-family: 'Moscow Sans';
+	font-size: 14px;
+	font-family: 'Moscow Sans';
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100vh;
 }

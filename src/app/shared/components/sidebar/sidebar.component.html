@@ -1,1 +1,48 @@
-<p>sidebar works!</p>
+<div class="form-container">
+	<div class="icon"></div>
+	<div class="role">
+		<div class="title">
+			<h2 class="name">Суперагент</h2>
+			<span class="bank">Банк ВТБ(ПАО)</span>
+		</div>
+		<mat-icon>
+			<img src="/assets/icons/18/arrow-down.svg" alt="menu">
+		</mat-icon>
+	</div>
+</div>
+<mat-divider class="divider"></mat-divider>
+<div class="form-container" [ngClass]="{'bg-grey': isSectionActive('management', ['/management', '/contracts'])}">
+	<div class="icon">
+		<mat-icon>work</mat-icon>
+	</div>
+	<div class="management">
+		<h2 class="title" (click)="toggleDropdown('management')">Управление</h2>
+		<div class="links"  *ngIf="isSectionActive('management', ['/management', '/contracts'])">
+			<!-- <div class="link" [routerLink]="['/routePath']" routerLinkActive="router-link-active" >
+			</div> -->
+			<a class="link" routerLink="/management" routerLinkActive="active">
+				Карточка контрагента
+			</a>
+			<a class="link">
+				Договоры контрагента
+			</a>
+		</div>
+	</div>
+</div>
+<div class="form-container" [ngClass]="{'bg-grey': isSectionActive('subagents', ['/route1', '/route2'])}">
+	<div class="icon">
+		<mat-icon>group</mat-icon>
+	</div>
+	<div class="subagents">
+		<div class="title" (click)="toggleDropdown('subagents')">Субагенты</div>
+		<div class="links" *ngIf="isSectionActive('subagents', ['/route1', '/route2'])">
+			<a class="link" routerLink="/route1" routerLinkActive="active">
+				Route 1
+			</a>
+			<a class="link" routerLink="/route2" routerLinkActive="active">
+				Route 2
+			</a>
+		</div>
+	</div>
+
+</div>

@@ -1,7 +1,18 @@
 $mobile:  "only screen and (max-width : 320px)";
+$mobile-landscape: "only screen and (max-width : 480px)";
 $tablet: "only screen and (max-width : 768px)";
 $laptop: "only screen and (max-width : 1024px)";
 $desktop: "only screen and (max-width : 1440px)";
 
 $background-color: #F5F6F7;
+$secondary-color: #666F78;
 $primary-color: #DA2032;
+
+$input-border-color: #828C9666;
+$input-error-color: #FF001F;
+$input-icon-color: #A2A9B1;
+
+$paginator-primary-color: #282828;
+
+$black: #000000;
+$white: #FFFFFF;

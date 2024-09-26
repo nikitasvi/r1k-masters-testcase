@@ -1,0 +1,81 @@
+@import "../../../../styles/variables";
+
+.filter {
+	display: flex;
+	flex-direction: column;
+	background-color: $white;
+	border-radius: 8px;
+	box-shadow: none;
+
+	padding-top: 32px;
+	padding-bottom: 32px;
+	padding-left: 40px;
+
+	margin-bottom: 32px;
+
+	.form {
+		padding: 32px 5% 32px 24px;
+	}
+
+	.mat-mdc-card-header.filter-title {
+		padding: 0;
+
+		.title {
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 24px;
+		}  
+	}
+
+	&-inputs {
+		display: flex;
+		gap: 24px;
+		flex-wrap: wrap;
+		max-width: 1150px;
+	}
+
+	.actions {	
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 25px;
+		row-gap: 16px;
+		
+		padding-top: 10px;
+
+		.action-button {
+			width: 169px;
+		}
+	}
+}
+
+@media #{$tablet} {
+	.filter	{
+		padding: 16px 24px;
+
+		.form {
+			padding: 16px;
+		}
+
+		.action-button {
+			width: 153px;
+		}
+	}
+}
+
+@media #{$mobile-landscape} {
+	.filter {
+		padding: 8px 14px;
+
+		.form {
+			padding: 0;
+		}
+
+		&-inputs {
+			justify-content: center;
+		}
+
+		.actions {
+			justify-content: center;
+		}
+	}
+}

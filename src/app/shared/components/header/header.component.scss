@@ -1,16 +1,16 @@
 @import "../../../styles/variables";
 
-:host {
-	display: block;
-	height: 70px;
-	background-color: $primary-color;
-}
-
-.header-container {
-	height: 100%;
+.toolbar {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
+	height: 70px;
+	margin: 0;
+	padding: 0 5%;
+
+	@media #{$laptop} {
+		height: 55px;
+	}
 }
 
 .profile {
@@ -20,8 +20,7 @@
 	display: flex;
 	align-items: center;
 	column-gap: 7px;
-
-	margin-right: 40px;
+	cursor:  pointer;
 
 	.avatar {
 		height: 32px;
@@ -44,25 +43,5 @@
 		.role {
 			color: $role-color;
 		}
-	}
-}
-
-.burger-menu {
-	display: none;
-}
-
-@media #{$laptop} {
-	:host {
-		height: 55px;
-	}
-
-	.profile {
-		display: none;
-	}
-
-	.burger-menu {
-		display: block;
-		margin-right: 40px;
-		cursor: pointer;
 	}
 }

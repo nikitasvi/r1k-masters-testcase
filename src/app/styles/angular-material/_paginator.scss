@@ -1,0 +1,29 @@
+@import "../variables";
+
+.mat-mdc-paginator {
+	color: $paginator-primary-color;
+
+	.mat-mdc-paginator-container {
+		.mat-mdc-form-field {
+			
+		}
+	}
+}
+
+.mat-mdc-paginator-page-size {
+	display: flex;
+	align-items: center;
+	color: $secondary-color;
+}
+  
+.mat-mdc-paginator-page-size::after {
+	content: 'записей' !important;
+	margin-left: 8px !important;
+}
+
+mat-paginator .mat-mdc-paginator-navigation-first,
+mat-paginator .mat-mdc-paginator-navigation-previous,
+mat-paginator .mat-mdc-paginator-navigation-next,
+mat-paginator .mat-mdc-paginator-navigation-last {
+	display: none;
+}

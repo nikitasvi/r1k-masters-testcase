@@ -1,0 +1,42 @@
+<div class="navigation">
+	<div class="back">
+		<mat-icon>arrow_back_ios</mat-icon>
+		<button class="btn-back">Назад</button>
+	</div>
+</div>
+<h2 class="title">Настройка учетных записей сотрудников контрагента</h2>
+<div class="toolbar">
+	<div class="actions">
+		<button	mat-button
+				color="primary" 
+				class="action-button">
+			<span>Добавить</span>
+			<mat-icon>add_circle_outline</mat-icon>
+		</button>
+		<button	mat-button
+				color="primary"
+				class="action-button">
+			<span>Разблокировать</span>
+			<mat-icon>check_circle_outline</mat-icon>
+		</button>
+		<button mat-button
+				color="primary"
+				class="action-button">
+			<span>Заблокировать</span>
+			<mat-icon>highlight_off</mat-icon>
+		</button>
+		</div>
+		<div class="filters">
+		<button mat-button
+				color="primary"
+				(click)="toggleFilter()"
+				[ngClass]="{ 'active': isFilterOpened }">
+			<span>Фильтр</span>
+			<mat-icon>filter_list</mat-icon>
+		</button>
+	</div>
+</div>
+<ng-container *ngIf="isFilterOpened">
+	<app-users-filter (filterChange)="applyFilter($event)" (isFilterOpenedChange)="toggleFilter($event)"></app-users-filter>
+</ng-container>
+<app-users-list [filter]="currentFilter"></app-users-list>

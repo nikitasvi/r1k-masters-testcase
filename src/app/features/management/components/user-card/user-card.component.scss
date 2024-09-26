@@ -1,0 +1,79 @@
+@import "../../../../styles/variables";
+
+.navigation {
+	.back {
+		display: flex;
+		align-items: center;
+		color: $secondary-color;
+		cursor: pointer;
+		
+		.btn-back {
+			background: none;
+			border: none;
+			padding: 0;
+
+			font-size: 18px;
+			font-weight: 700;
+			line-height: 24px;
+		}
+	}
+}
+
+.title {
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 36px;
+	margin: 32px 0 24px 0;
+}
+
+.toolbar {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	column-gap: 100px;
+	row-gap: 24px;
+
+	margin-bottom: 24px;
+
+	.actions {
+		display: flex;
+		column-gap: 24px;
+		flex-wrap: wrap;
+		row-gap: 8px;
+
+		.action-button {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: center;
+			align-items: center;
+			column-gap: 8px;
+		}
+	}
+
+	mat-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		margin: 0;
+	}
+}
+
+@media #{$mobile-landscape} {
+	.back {
+		margin: 32px 16px 0 16px;
+	}
+	
+	.title {
+		margin: 32px 16px 24px 16px;
+	}
+
+	.toolbar {
+		row-gap: 8px;
+
+		.actions, .filters {
+			margin: 0 16px;
+		}
+	}
+}

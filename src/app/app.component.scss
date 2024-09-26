@@ -5,10 +5,30 @@
 	background-color: $background-color;
 }
 
-.container {
-	margin: 44px;
+mat-sidenav-container {
+	min-height: 100vh;
+}
 
-	@media #{$mobile} {
-		margin: 0;
+.sidenav {
+	min-width: 273px;
+	border: none;
+	background-color: $secondary-color;
+	color: $white;
+	height: 100%;
+
+	@media #{$desktop} {
+		min-width: 263px;
+	}
+
+	@media #{$tablet} {
+		width: 100%;
+	}
+}
+
+.container {
+	padding: 44px;
+
+	@media #{$mobile-landscape} {
+		padding: 0;
 	}
 }

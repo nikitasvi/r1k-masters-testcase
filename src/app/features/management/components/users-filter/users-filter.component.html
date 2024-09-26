@@ -1,0 +1,143 @@
+<mat-card class="filter">
+	<mat-card-header class="filter-title">
+		<span class="title">Фильтр</span>
+	</mat-card-header>
+	<mat-card-content>
+		<form [formGroup]="filterForm" class="form">
+			<div class="filter-inputs">
+				<div class="form-input">
+					<label class="label">Логин</label>
+					<mat-form-field>
+						<input 	class="input"
+								type="text" 
+								matInput 
+								formControlName="login">
+						<button *ngIf="filterForm.get('login')?.value" 
+								matSuffix 
+								mat-icon-button 
+								aria-label="Clear" 
+								(click)="clearField('login')">
+							<mat-icon matSuffix>cancel</mat-icon>
+						</button>
+					</mat-form-field>
+				</div>
+				
+				<div class="form-input">
+					<label class="label">Телефон</label>
+					<mat-form-field>
+						<input 	class="input"
+								type="tel" 
+								mask="+0 (000) 000-00-00" 
+								matInput 
+								formControlName="phone">
+						<button *ngIf="filterForm.get('phone')?.value" 
+								matSuffix 
+								mat-icon-button 
+								aria-label="Clear" 
+								(click)="clearField('phone')">
+							<mat-icon matSuffix>cancel</mat-icon>
+						</button>
+					</mat-form-field>
+				</div>
+				
+				<div class="form-input">
+					<label class="label">Дата Создания</label>
+					<mat-form-field>
+						<input 	class="input" 
+								matInput 
+								[matDatepicker]="pickerCreatedAt" 
+								formControlName="dateCreatedAt">
+						<mat-datepicker-toggle matIconSuffix [for]="pickerCreatedAt">
+							<mat-icon matDatepickerToggleIcon>apps</mat-icon>
+						</mat-datepicker-toggle>
+						<mat-datepicker #pickerCreatedAt></mat-datepicker>
+						<mat-error *ngIf="filterForm.get('dateCreatedAt')?.invalid" color="primary">
+							Недопустимые символы
+						</mat-error>
+					</mat-form-field>
+				</div>
+				
+				<div class="form-input">
+					<label class="label">Статус</label>
+					<mat-form-field>
+						<mat-select formControlName="status">
+							<mat-option *ngFor="let status of statuses" [value]="status">
+								{{ status }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				
+				<div class="form-input">
+					<label class="label">Email</label>
+					<mat-form-field>
+						<input 	class="input" 
+								matInput 
+								formControlName="email">
+						<button *ngIf="filterForm.get('email')?.value" 
+								matSuffix
+								mat-icon-button 
+								aria-label="Clear" 
+								(click)="clearField('email')">
+							<mat-icon matSuffix>cancel</mat-icon>
+						</button>
+						<mat-error *ngIf="filterForm.get('email')?.invalid" color="primary">
+							Недопустимые символы
+						</mat-error>
+					</mat-form-field>
+				</div>
+				
+				<div class="form-input">
+					<label class="label">Роль</label>
+					<mat-form-field>
+						<mat-select formControlName="role">
+							<mat-option *ngFor="let role of roles" [value]="role">
+								{{ role }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				
+				<div class="form-input">
+					<label class="label">Дата изменения</label>
+					<mat-form-field>
+						<input	class="input" 
+								matInput 
+								[matDatepicker]="pickerModifiedAt" 
+								formControlName="dateModifiedAt">
+						<mat-datepicker-toggle matIconSuffix [for]="pickerModifiedAt">
+							<mat-icon matDatepickerToggleIcon>apps</mat-icon>
+						</mat-datepicker-toggle>
+						<mat-datepicker #pickerModifiedAt></mat-datepicker>
+						<mat-error *ngIf="filterForm.get('dateModifiedAt')?.invalid" color="primary">
+							Недопустимые символы
+						</mat-error>
+					</mat-form-field>
+				</div>
+			</div>
+			
+			<div class="actions">
+				<button mat-button 
+						class="action-button large" 
+						color="primary" 
+						(click)="onApplyFilter()">
+					<span>Применить</span>
+				</button>
+				<button mat-button 
+						class="action-button large" 
+						color="primary" 
+						(click)="onCancel()" 
+						[ngClass]="{ 'disabled': isFormEmpty() }">
+					<span>Отмена</span>
+				</button>
+				<button mat-button 
+						class="action-button large" 
+						color="primary" 
+						(click)="onReset()" 
+						[ngClass]="{ 'disabled': isFormEmpty() }">
+					<span>Сбросить</span>
+				</button>
+			</div>
+		</form>
+	</mat-card-content>
+</mat-card>
