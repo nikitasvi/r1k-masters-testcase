@@ -15,7 +15,7 @@ export class UsersFilterComponent {
 	@Output() public filterChange = new EventEmitter<any>();
 	@Output() public isFilterOpenedChange = new EventEmitter<boolean>();
 
-  	public roles = Object.values(Role); 
+	public roles = Object.values(Role); 
 	public statuses = Object.values(Status);
 
 	public selectedRole: Role = Role.User;

@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { UsersListComponent } from '../users-list/users-list.component';
 
 @Component({
 	selector: 'app-user-card',
@@ -7,6 +8,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 	encapsulation: ViewEncapsulation.None
 })
 export class UserCardComponent {
+	@ViewChild(UsersListComponent) usersListComponent!: UsersListComponent;
+
 	public currentFilter: any = {};
 	public isFilterOpened: boolean = true;
 
@@ -21,5 +24,13 @@ export class UserCardComponent {
 
 	public applyFilter(filterValues: any): void {
 		this.currentFilter = filterValues;
+	}
+
+	public unblockSelected(): void {
+		this.usersListComponent.toggleHasSignatureForSelectedUsers(true); // Разблокировать
+	}
+
+	public blockSelected(): void {
+		this.usersListComponent.toggleHasSignatureForSelectedUsers(false); // Заблокировать
 	}
 }

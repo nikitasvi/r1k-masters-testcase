@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, inject, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { IUser } from '../../models/user.model';
 import { Status } from '../../enums/status.enum';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -36,10 +36,10 @@ export class UsersListComponent implements OnInit, AfterViewInit, OnChanges {
 		this.dataSource.paginator = this.topPaginator;
 		this.bottomPaginator.page.subscribe(event => this.syncPrimaryPaginator(event));
 	}
-	  
+
 	public ngOnChanges(): void {
 		if (this.filter) {
-		  	this.applyTableFilter();
+			this.applyTableFilter();
 		}
 	}
 
@@ -82,5 +82,14 @@ export class UsersListComponent implements OnInit, AfterViewInit, OnChanges {
 	
 	public toggleRow(row: IUser): void {
 		this.selection.toggle(row);
+	}
+
+	public toggleHasSignatureForSelectedUsers(hasSignature: boolean): void {
+		const selectedUsers = this.selection.selected;
+		selectedUsers.forEach(user => {
+			user.hasSignature = hasSignature;
+			this.usersService.updateUser(user);
+		});
+		this.dataSource.data = this.usersService.getUsers();
 	}
 }

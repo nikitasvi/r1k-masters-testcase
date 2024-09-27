@@ -32,8 +32,6 @@ export const CUSTOM_DATE_FORMATS: MatDateFormats = {
 	}
 };
 
-//registerLocaleData(localeRu);
-
 @NgModule({
 	imports: [
 		MatButtonModule,
@@ -55,7 +53,7 @@ export const CUSTOM_DATE_FORMATS: MatDateFormats = {
 	providers: [
 		{
 			provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      		useValue: appearance
+			useValue: appearance
 		},
 		{
 			provide: MAT_DATE_FORMATS, 
