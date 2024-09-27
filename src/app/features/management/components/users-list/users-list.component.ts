@@ -7,6 +7,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { WindowSizeService } from '../../../../shared/services/widow-sizes.service';
 import { WindowSize } from '../../../../shared/enums/window-size.enum';
 import { UserService } from '../../services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-users-list',
@@ -17,6 +18,7 @@ export class UsersListComponent implements OnInit, AfterViewInit, OnChanges {
 	public windowSizeService = inject(WindowSizeService);
 	public WindowSize = WindowSize;
 	private usersService = inject(UserService);
+	private usersSubscription!: Subscription;
 
 	@Input() filter!: any;
 	@ViewChild("topPaginator") topPaginator!: MatPaginator;
@@ -24,12 +26,18 @@ export class UsersListComponent implements OnInit, AfterViewInit, OnChanges {
 
 	public Status = Status;
 
-	public dataSource = new MatTableDataSource<IUser, MatPaginator>();
+	public dataSource = new MatTableDataSource<IUser>();
 	public selection = new SelectionModel<IUser>(true, []);
 	public displayedColumns: string[] = ['action', 'login', 'email', 'phone', 'role', 'dateModifiedAt', 'dateCreatedAt', 'status', 'hasSignature'];
 
 	public ngOnInit() {
-		this.dataSource.data = this.usersService.getUsers();
+		this.loadUsers();
+	}
+
+	private loadUsers(): void {
+		this.usersSubscription = this.usersService.getUsers().subscribe(users => {
+			this.dataSource.data = users;
+		});
 	}
 
 	public ngAfterViewInit() {
@@ -79,7 +87,7 @@ export class UsersListComponent implements OnInit, AfterViewInit, OnChanges {
 		const numRows = this.dataSource.data.length;
 		return numSelected === numRows;
 	}
-	
+
 	public toggleRow(row: IUser): void {
 		this.selection.toggle(row);
 	}
@@ -90,6 +98,12 @@ export class UsersListComponent implements OnInit, AfterViewInit, OnChanges {
 			user.hasSignature = hasSignature;
 			this.usersService.updateUser(user);
 		});
-		this.dataSource.data = this.usersService.getUsers();
+		this.loadUsers();
+	}
+
+	ngOnDestroy() {
+		if (this.usersSubscription) {
+			this.usersSubscription.unsubscribe();
+		}
 	}
 }
